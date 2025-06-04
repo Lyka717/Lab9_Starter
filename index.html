@@ -87,7 +87,16 @@
     </section>
   </main>
 
+  <script src="https://cdn.trackjs.com/agent/v3/latest/t.js"></script>
   <script>
+    window.TrackJS && TrackJS.install({ 
+      token: "cc6847de31d345a6af2751beccd1cf0d"
+      // for more configuration options, see https://docs.trackjs.com
+    });
+  </script>
+
+  <script>
+    
     class inputError extends Error{
       constructor(message) {
         super(message);
@@ -204,13 +213,7 @@
 
     window.onerror = (message, a, b, c) => {
       const errData = {message: message, source: a, lineno: b, colno: c};
-      fetch('https://lyka717.github.io/Lab9_Starter/endpoint', {
-        method: 'POST',
-        headers: {
-          'Content-Type' : 'application/json'
-        },
-        body: JSON.stringify(errData)
-      });
+      fetch('https://lyka717.github.io/Lab9_Starter/endpoint');
       console.log(errData);
       return false;
     }
@@ -218,6 +221,7 @@
       console.log(explode);
     });
 
+    TrackJS.track('Testing TrackJS!');
   </script>
 </body>
 
