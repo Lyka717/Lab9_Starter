@@ -213,7 +213,13 @@
 
     window.onerror = (message, a, b, c) => {
       const errData = {message: message, source: a, lineno: b, colno: c};
-      fetch('https://lyka717.github.io/Lab9_Starter/endpoint');
+      fetch('https://lyka717.github.io/Lab9_Starter/endpoint', {
+        method: 'POST',
+        headers: {
+          'Content-Type' : 'application/json'
+        },
+        body: JSON.stringify(errData)
+      });
       console.log(errData);
       return false;
     }
